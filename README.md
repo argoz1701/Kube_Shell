@@ -2,6 +2,11 @@
 
 This is a simple shell written in python to run custome kubectl commands. This is a project for myself to try and git better at python and is most used for my own specific use case while working with Kubernetes.
 
+## Install
+```
+pip install https://github.com/argoz1701/Kube_Shell.git
+```
+
 ## How To
 
 To run save the kube_shell.py file and open a terminal form that direcroty and run the below
