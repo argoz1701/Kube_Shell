@@ -1,6 +1,6 @@
 # Kubernetes Kubectl Shell
 
-This is a simple shell written in python to run custome kubectl commands. 
+This is a simple shell written in python to run custome kubectl commands. This is a project for myself to try and git better at python and is most used for my own specific use case while working with Kubernetes.
 
 ## How To
 
