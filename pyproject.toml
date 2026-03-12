@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kubesh"
+version = "0.2.0"
+description = "A tiny kubectl helper shell and shortcuts (Click-based)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-2.0-only" }
+
+authors = [
+  { name = "Daniel West" }
+]
+
+dependencies = [
+  "click>=8.1"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourname/kubesh"
+Issues = "https://github.com/yourname/kubesh/issues"
+
+[project.scripts]
+kubesh = "kubesh.cli:cli"
+
