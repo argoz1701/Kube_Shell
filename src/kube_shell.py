@@ -10,7 +10,6 @@ Version: 0.2
 import subprocess
 import sys
 import shlex
-
 import click
 
 APP_HELP = (
@@ -83,7 +82,7 @@ def dep():
 
 
 # -----------------------------
-# Core runner
+# Runs the commnads under kubectl
 # -----------------------------
 
 def run_kubectl(args) -> int:
@@ -92,7 +91,6 @@ def run_kubectl(args) -> int:
         result = subprocess.run(cmd, text=True, capture_output=True)
         if result.stdout:
             click.echo(result.stdout, nl=False)
-        # print stderr on failure (adjust if you want stderr always)
         if result.stderr and result.returncode != 0:
             click.echo(result.stderr, err=True, nl=False)
         return result.returncode
@@ -106,17 +104,16 @@ def run_kubectl(args) -> int:
 # -----------------------------
 
 def shell_loop():
-    # Optional: enable history on Unix; ignore on Windows
     try:
-        import readline  # noqa: F401
+        import readline
     except Exception:
         pass
 
-    click.echo("|-----------------------------------------------------------------------------------------|")
-    click.echo("|--------------------------------- KUBE Shell --------------------------------------------|")
-    click.echo("|-----------------------------------------------------------------------------------------|")
+    click.echo(" _________________________________________________________________________________________")
+    click.echo("|                                  KUBE Shell                                             |")
+    click.echo("|_________________________________________________________________________________________|")
     click.echo("'kubectl <command>' also accepted input")
-    click.echo("Type 'exit' or 'quit' to leave. --help for help\n")
+    click.echo("Type 'exit' or 'quit/q' to leave. --help for help\n")
 
     while True:
         try:
@@ -146,16 +143,15 @@ def shell_loop():
         if lower in {"jose"}:
             click.echo("Did you mean Joes?")
             continue
-        # Otherwise, treat it as our Click command line
         try:
             args = shlex.split(line)
-            # Invoke Click programmatically without exiting the whole process
             cli.main(args=args, standalone_mode=False)
         except SystemExit as e:
-            # Swallow Click's SystemExit to keep the REPL alive
             if e.code not in (0, None):
                 click.echo(f"(command exited with code {e.code})", err=True)
         except Exception as exc:
             click.echo(f"Error: {exc}", err=True)
+
+
 if __name__ == "__main__":
     cli()
