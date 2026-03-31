@@ -4,7 +4,7 @@ This is a simple shell written in python to run custome kubectl commands. This i
 
 ## Install
 ```
-pip install https://github.com/argoz1701/Kube_Shell.git
+pip install https://github.com/danswest/Kube_Shell.git
 ```
 ### Required Dependencies 
 - Python version 3.9 or newer
